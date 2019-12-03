@@ -543,7 +543,7 @@ const char* get_avrofile_name(const char *file_ptr, int data_len, char *dest)
     const char *rval = NULL;
 
     // replaces # with space after find end of filename
-    replace_char(avro_file,'#',' ')
+    replace_char(avro_file,'#',' ');
 
     if (cmd_sep)
     {
