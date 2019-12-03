@@ -540,7 +540,7 @@ const char* get_avrofile_name(const char *file_ptr, int data_len, char *dest)
     avro_file[data_len] = '\0';
 
     // replaces # with space
-    replace_char(&avro_file,'#',' ')
+    replace_char(avro_file,'#',' ')
 
     char *cmd_sep = strchr(avro_file, ' ');
     const char *rval = NULL;
