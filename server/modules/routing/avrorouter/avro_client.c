@@ -509,6 +509,16 @@ avro_client_process_command(AVRO_INSTANCE *router, AVRO_CLIENT *client, GWBUF *q
     }
 }
 
+
+char* replace_char(char* str, char find, char replace){
+    char *current_pos = strchr(str,find);
+    while (current_pos){
+        *current_pos = replace;
+        current_pos = strchr(current_pos,find);
+    }
+    return str;
+}
+
 /**
  * @brief Form the full Avro file name
  *
@@ -528,6 +538,9 @@ const char* get_avrofile_name(const char *file_ptr, int data_len, char *dest)
     char avro_file[data_len + 1];
     memcpy(avro_file, file_ptr, data_len);
     avro_file[data_len] = '\0';
+
+    // replaces # with space
+    replace_char(&avro_file,'#',' ')
 
     char *cmd_sep = strchr(avro_file, ' ');
     const char *rval = NULL;
